@@ -15,7 +15,7 @@ class UserManager(BaseUserManager):
             raise ValueError('Username field required')
         if not email:
             raise ValueError('Email field required')
-        if not password or not match_pattern(password_pattern, username):
+        if not password or not match_pattern(password_pattern, password):
             raise ValueError('Password field required')
 
         user = self.model(
