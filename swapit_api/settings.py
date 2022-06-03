@@ -29,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)-%d@$s!(33wn7(d_)c5aypob%f%%@-&t(vp0e@+3^x4hj4rgp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["api-swapit.herokuapp.com"]
 
 
 # Application definition
