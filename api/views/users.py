@@ -91,7 +91,7 @@ def login(request):
         user = User.objects.get(username=request.data['username'])
         if not user or not user.check_password(request.data['password']): raise Exception('Invalid password') 
 
-        Token.objects.filter(user=user).first().delete()        
+        Token.objects.filter(user=user).delete()        
         token = Token.objects.create(user=user)
 
         return Response({'auth_token': str(token.key), 'user': UserSerializer(user).data})
