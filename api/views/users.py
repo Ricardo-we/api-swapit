@@ -70,7 +70,8 @@ def confirm_user_creation(request, confirmation_code):
             email=request.data['email'],
             password=request.data['password'],
             location=request.data.get('location'),
-            user_currency=request.data.get('user_currency')
+            user_currency=request.data.get('user_currency'),
+            phone_number=request.data.get("phone_number")
         )
         token = Token.objects.create(user=user)
         confirmation_code_.delete()

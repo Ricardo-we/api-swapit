@@ -8,10 +8,10 @@ import cloudinary
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, email, password, location=None, user_currency=None):
+    def create_user(self, username, email, password, phone_number, location=None, user_currency=None):
         password_pattern = r"^(?=.*[A-Za-z])(?=.*[@$!%*#?&_])[\w@$!%*#?&_]{8,150}$"
 
-        if not username or not match_pattern(r'[\w\d\_\-]{3,150}', username):
+        if not username or not match_pattern(r'^[\w\d_-]{3,150}$', username):
             raise ValueError('Username field required')
         if not email:
             raise ValueError('Email field required')
@@ -22,7 +22,8 @@ class UserManager(BaseUserManager):
             username=username,
             email=self.normalize_email(email),
             location=location,
-            user_currency=user_currency
+            user_currency=user_currency,
+            phone_number=phone_number
         )
         user.set_password(password)
         user.save(using=self._db)
